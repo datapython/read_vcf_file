@@ -24,7 +24,6 @@ def read_vcf(file):
 
 def get_info_column_value():
      # Convert row of INFO to list.
-
     vcf = read_vcf(file)[1]
     info = vcf['INFO']
    
@@ -32,7 +31,6 @@ def get_info_column_value():
     info = [[j.split('=') for j in k] for k in info]
     
     # Collect all unique values in order from all rows of INFO column
-    
     all_values = []
     [all_values.append(a[0]) for b in info for a in b if a[0] not in all_values]
     
