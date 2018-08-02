@@ -25,7 +25,6 @@ def get_info_column_value():
      # Convert row of INFO to list.
     vcf = read_vcf(file)[1]
     info = vcf['INFO']
-   
     info = [i.split(';') for i in info]
     info = [[j.split('=') for j in k] for k in info]
     
@@ -78,7 +77,6 @@ def cleanup():
 
 def main():
     print("Welcome to use this python snippet for reading your vcf file!\nThe returned csv file will be saved in your current working directory with name vcf_timestamp.")
-
     file = input('Please input your file name: ')  
     return file
 
