@@ -1,4 +1,4 @@
-# read vcf file 
+# read vcf file and save to csv.
 # For convenience, change working directory to the directory containing the vcf file
 # 2018_8_2 @8:24 AM By Shengguo, email: sghello2000@yahoo.com. 
 
