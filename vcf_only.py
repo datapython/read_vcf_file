@@ -1,6 +1,6 @@
 # read vcf file 
 # For convenience, change working directory to the directory containing the vcf file
-# 2018_8_2 @8:24 AM By Shengguo Li, email: sghello2000@yahoo.com. 
+# 2018_8_2 @8:24 AM By Shengguo, email: sghello2000@yahoo.com. 
 
 import pandas as pd
 import time
