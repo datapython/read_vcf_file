@@ -76,7 +76,7 @@ def cleanup():
 
 
 def main():
-    print("Welcome to use this python snippet for reading your vcf file!\nThe returned csv file will be saved in your current working directory with name vcf_timestamp.")
+    print("Welcome to use this python snippet for reading your vcf file!\nThe processed file will be saved in your current working directory with name clean_df_timestamp.")
     file = input('Please input your file name: ')  
     return file
 
