@@ -18,7 +18,6 @@ def read_vcf(file):
 
     # Update column name #CHROM
     vcf.rename(columns = dict(zip(list(vcf.columns), [a.replace("#", '') for a in list(vcf.columns)])), inplace = True)
-
     return (comments, vcf)
 
 
@@ -33,7 +32,6 @@ def get_info_column_value():
     # Collect all unique values in order from all rows of INFO column
     all_values = []
     [all_values.append(a[0]) for b in info for a in b if a[0] not in all_values]
-    
     return (info, all_values)
 
 
@@ -45,7 +43,6 @@ def transform_info_column():
     [k.append([l, 'NaN']) for l in values for k in info if l not in [m[0] for m in k]]
 
     infos =[[(i[0], i[1]) if (len(i) > 1) else (i[0], i[0]) for i in j] for j in info]
-
     return (values, infos)
 
 
@@ -61,7 +58,6 @@ def update_vcf():
     # Adding new columns to vcf dataframe.
     for name in cNames:
         vcf[name] = [r[name] for r in xcols]
-
     return vcf
 
 
