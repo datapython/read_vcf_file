@@ -6,14 +6,14 @@ import pandas as pd
 import time
 
 def read_vcf(file):
-    # read the comments of vcf file
+    # Read the comments of vcf file
     with open(file, 'r') as f:
         comments = []
         for line in f:
             if line.startswith('#'):
                 comments.append(line.strip())
     
-    # read the tsv of vcf file
+    # Read the tsv of vcf file
     vcf = pd.read_csv(file, delimiter = '\t', header = (len(comments) - 1))
 
     # Update column names
