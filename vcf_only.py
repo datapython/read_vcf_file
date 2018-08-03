@@ -69,7 +69,7 @@ def cleanup():
     df.replace({'.': 'NaN'}, inplace = True)
 
     # Save the df as csv to the current working dir with timestamp
-    fName ='clean_df_' + time.strftime("%Y%m%d_%H%M%S")+ '.csv'
+    fName ='clean_df_' + time.strftime("%Y%m%d_%H%M%S") + '.csv'
     df.to_csv(fName)
 
     print(f"{'*'*25}\nIt is all done. You can find your saved file named {fName} in the current working directory.")
