@@ -6,17 +6,17 @@ import pandas as pd
 import time
 
 def read_vcf(file):
-    # Read the comments of vcf file
+    # Read the comments of vcf file.
     with open(file, 'r') as f:
         comments = []
         for line in f:
             if line.startswith('#'):
                 comments.append(line.strip())
     
-    # Read the tsv of vcf file
+    # Read the tsv of vcf file.
     vcf = pd.read_csv(file, delimiter = '\t', header = (len(comments) - 1))
 
-    # Update column names
+    # Update column names.
     vcf.rename(columns = dict(zip(list(vcf.columns), [a.replace("#", '') for a in list(vcf.columns)])), inplace = True)
     return (comments, vcf)
 
@@ -28,7 +28,7 @@ def get_info_column_value():
     info = [i.split(';') for i in info]
     info = [[j.split('=') for j in k] for k in info]
     
-    # Collect all unique values from all rows of INFO column
+    # Collect all unique values from all rows of INFO column.
     all_values = []
     [all_values.append(a[0]) for b in info for a in b if a[0] not in all_values]
     return (info, all_values)
