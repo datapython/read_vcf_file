@@ -54,7 +54,7 @@ def update_vcf():
     xcols = transform_info_column()[1]   
     xcols = [dict(row) for row in xcols]
 
-    # Adding new columns to vcf dataframe.
+    # Add new columns to vcf dataframe.
     for name in cNames:
         vcf[name] = [r[name] for r in xcols]
     return vcf
