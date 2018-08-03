@@ -69,14 +69,15 @@ def cleanup():
     df.replace({'.': 'NaN'}, inplace = True)
 
     # Save the df as csv to the current working dir with timestamp
-    df.to_csv('clean_df_' + time.strftime("%Y%m%d_%H%M%S" + '.csv'))
+    fName ='clean_df_' + time.strftime("%Y%m%d_%H%M%S")+ '.csv'
+    df.to_csv(fName)
 
-    print('It is all done. You can find your cleaned file in the current working directory.')
+    print(f"{'*'*25}\nIt is all done. You can find your saved file named {fName} in the current working directory.")
     return df
 
 
 def main():
-    print("Welcome to use this python snippet for reading your vcf file!\nThe processed file will be saved in your current working directory with name clean_df_timestamp.")
+    print(f"Welcome to use this python snippet for reading your vcf file!\n{'*'*25}")
     file = input('Please input your file name: ')  
     return file
 
