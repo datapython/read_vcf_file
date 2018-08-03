@@ -6,7 +6,7 @@ import pandas as pd
 import time
 
 def read_vcf(file):
-    # read the comments of the vcf file
+    # read the comments of vcf file
     with open(file, 'r') as f:
         comments = []
         for line in f:
@@ -16,7 +16,7 @@ def read_vcf(file):
     # read the tsv of vcf file
     vcf = pd.read_csv(file, delimiter = '\t', header = (len(comments) - 1))
 
-    # Update column name #CHROM
+    # Update column names
     vcf.rename(columns = dict(zip(list(vcf.columns), [a.replace("#", '') for a in list(vcf.columns)])), inplace = True)
     return (comments, vcf)
 
@@ -28,7 +28,7 @@ def get_info_column_value():
     info = [i.split(';') for i in info]
     info = [[j.split('=') for j in k] for k in info]
     
-    # Collect all unique values in order from all rows of INFO column
+    # Collect all unique values from all rows of INFO column
     all_values = []
     [all_values.append(a[0]) for b in info for a in b if a[0] not in all_values]
     return (info, all_values)
@@ -62,13 +62,13 @@ def update_vcf():
 
 def cleanup():
     """
-    Drop the INFO column and update all missing symbol "." into NaN.
+    Drop the INFO column and update all missing symbol "." to NaN.
     """
     df = pd.DataFrame(update_vcf())
     df.drop(columns = ['INFO'], inplace = True)
     df.replace({'.': 'NaN'}, inplace = True)
 
-    # Save the df as csv to the current working dir with timestamp
+    # Save the dataframe as csv to the current working directory with timestamp.
     fName ='clean_df_' + time.strftime("%Y%m%d_%H%M%S") + '.csv'
     df.to_csv(fName)
 
