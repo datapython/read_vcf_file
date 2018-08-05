@@ -69,10 +69,8 @@ def cleanup():
     df.replace({'.': 'NaN'}, inplace = True)
 
     # Save to csv file to the current working directory.
-
     fName = file.split('.')[0] + '.csv'
     df.to_csv(fName)
-
     print(f"{'*'*25}\nIt is all done. You can find your saved file named {fName} in the current working directory.")
    
 
