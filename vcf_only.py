@@ -1,4 +1,4 @@
-# read vcf file and convert to csv.
+# read vcf file and convert to csv for data and txt for header.
 # For convenience, change working directory to the directory containing the vcf file.
 # 2018_8_2 @8:24 AM By Shengguo, email: sghello2000@yahoo.com.
 
@@ -12,7 +12,10 @@ def read_vcf(file):
         for line in f:
             if line.startswith('#'):
                 comments.append(line.strip())
-    
+
+    with open(file.split('.')[0] + '_header.txt', 'w') as f:
+        f.writelines(comments)
+
     # Read the tsv of vcf file.
     vcf = pd.read_csv(file, delimiter = '\t', header = (len(comments) - 1))
 
