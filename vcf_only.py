@@ -1,9 +1,9 @@
-# read vcf file and save to csv.
-# For convenience, change working directory to the directory containing the vcf file
-# 2018_8_2 @8:24 AM By Shengguo, email: sghello2000@yahoo.com. 
+# read vcf file and convert to csv.
+# For convenience, change working directory to the directory containing the vcf file.
+# 2018_8_2 @8:24 AM By Shengguo, email: sghello2000@yahoo.com.
 
 import pandas as pd
-import time
+
 
 def read_vcf(file):
     # Read the comments of vcf file.
@@ -54,7 +54,7 @@ def update_vcf():
     xcols = transform_info_column()[1]   
     xcols = [dict(row) for row in xcols]
 
-    # Adding new columns to vcf dataframe.
+    # Add new columns to vcf dataframe.
     for name in cNames:
         vcf[name] = [r[name] for r in xcols]
     return vcf
@@ -68,13 +68,13 @@ def cleanup():
     df.drop(columns = ['INFO'], inplace = True)
     df.replace({'.': 'NaN'}, inplace = True)
 
-    # Save the dataframe as csv to the current working directory with timestamp.
-    fName ='clean_df_' + time.strftime("%Y%m%d_%H%M%S") + '.csv'
+    # Save to csv file to the current working directory.
+
+    fName = file.split('.')[0] + '.csv'
     df.to_csv(fName)
 
     print(f"{'*'*25}\nIt is all done. You can find your saved file named {fName} in the current working directory.")
-    return df
-
+   
 
 def main():
     print(f"Welcome to use this python snippet for reading your vcf file!\n{'*'*25}")
