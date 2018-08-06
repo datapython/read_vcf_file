@@ -13,7 +13,6 @@ def read_vcf(file):
             if line.startswith('#'):
                 comments.append(line.strip())
 
-
     # Read the tsv of vcf file.
     vcf = pd.read_csv(file, delimiter = '\t', header = (len(comments) - 1))
 
