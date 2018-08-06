@@ -13,8 +13,6 @@ def read_vcf(file):
             if line.startswith('#'):
                 comments.append(line.strip())
 
-    with open(file.split('.')[0] + '_header.txt', 'w') as f:
-        f.writelines(comments)
 
     # Read the tsv of vcf file.
     vcf = pd.read_csv(file, delimiter = '\t', header = (len(comments) - 1))
@@ -22,6 +20,14 @@ def read_vcf(file):
     # Update column names.
     vcf.rename(columns = dict(zip(list(vcf.columns), [a.replace("#", '') for a in list(vcf.columns)])), inplace = True)
     return (comments, vcf)
+
+
+def header():
+    # Save the header file.
+    fName = file.split('.')[0] + '_header.txt'
+    with open(fName, 'w') as f:
+        f.writelines(read_vcf(file)[0])
+    print(f"{'*'*25}\nHeader file is saved as {fName}.")
 
 
 def get_info_column_value():
@@ -74,7 +80,7 @@ def cleanup():
     # Save to csv file to the current working directory.
     fName = file.split('.')[0] + '.csv'
     df.to_csv(fName)
-    print(f"{'*'*25}\nIt is all done. You can find your saved file named {fName} in the current working directory.")
+    print(f"{'*'*25}\nIt is all done. Your data file named {fName} is also saved in the current working directory.")
    
 
 def main():
@@ -85,6 +91,7 @@ def main():
 
 if __name__ == "__main__":    
     file = main()
+    header()
     cleanup()
 
     
