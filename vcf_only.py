@@ -1,4 +1,4 @@
-# read vcf file and convert to csv for data and txt for header.
+# Read vcf file and convert to csv for data and txt for header.
 # For convenience, change working directory to the directory containing the vcf file.
 # 2018_8_2 @8:24 AM By Shengguo
 
